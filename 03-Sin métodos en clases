@@ -1,4 +1,4 @@
-<!-- Métodos en clases: menos eficiente que con métodos y $this -->
+<!-- Acceder a los atributos de una clase sin métodos y $this: menos eficiente -->
 
 <?php 
 
