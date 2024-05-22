@@ -1,0 +1,34 @@
+* La POO permite crear múltiples objetos a partir de una clase
+* Definir una clase: se recomienda que el nombre de la clase comience por mayúsculas
+* En muchos lenguajes orientado a objetos existe lo que se llaman constructores. Un constructor es una función que se va a mandar llamar automáticamente una vez que se ha creado una nueva instancia.
+* En programación orientada a objetos $nombre es un atributo o propiedad, no se le llama variable.
+* Ventajas POO: código mucho más ordenado y ya  sean variables, funciones, atributos o métodos, se accede a acceder a ellos con la sintaxis de flecha
+
+  class Producto {
+      public function __construct(public string $nombre, public int $precio, public bool   $disponible)
+      {
+          echo "Desde el constructor";
+      }
+
+// Para definir un constructor en PHP utilizamos public function__construct, que va a hacer una función dentro de esta clase. Cuando son funciones dentro de una clase se les conoce como métodos, pero también se le puede decir funciones.
+
+    public function mostrarProducto() { //lo que hay entre llaves es es el cuerpo del método.
+        echo "El Producto es: " . $this->nombre . " y su precio es de: " . $this->precio;
+    }
+    //$this es un "comodín" porque PHP no sabe como vamos a nombrar nuestras variables
+}
+
+//Después de crear la clase Producto, creamos la variable $producto.
+  $producto = new Producto('Tablet', 200, true); //Siempre que exista una clase, debemos utilizar new para crear una nueva instancia
+  $producto->mostrarProducto(); //con la sintaxis de flecha imprimimos los valores del objeto Producto
+
+    echo "<pre>";
+    var_dump($producto);
+    echo "</pre>";
+
+  $producto2 = new Producto('Monitor Curvo', 300, true);
+  $producto2->mostrarProducto();
+  
+    echo "<pre>";
+    var_dump($producto2);
+    echo "</pre>";
