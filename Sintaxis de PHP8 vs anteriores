@@ -1,0 +1,35 @@
+//El resultado va a ser exactamente el mismo en los dos siguientes casos. Sin embargo, la mayoría de ejemplos de programación orientada a objetos seguramente utilicen más bien la sintaxis más antigua. 
+
+
+// * Forma de PHP5 y PHP7 de crear atributos e instanciar un constructor (las más comunes)
+// Creamos la clase Porducto con 3 atributos y después les asignamos valores por medio de function __construct
+
+class Producto {
+    public $nombre;
+    public $precio;
+    public $disponible;
+
+    public function __construct(string $nombre, int $precio, bool $disponible)
+    {
+        $this->nombre = $nombre;
+        $this->precio = $precio;
+        $this->disponible = $disponible;
+    }
+}
+
+
+// * Forma nueva de PHP8: importante saber que éste código solamente funciona en PHP 8.
+// Los public que preceden a los atributos se les conocen como modificdores de acceso
+
+class Producto {
+    public function __construct(public string $nombre, public int $precio, public bool $disponible)
+    {
+    }
+}
+
+$producto = new Producto('Tablet', 200, true); 
+
+//Para comprobar:
+echo "<pre>";
+var_dump($producto);
+echo "</pre>";
