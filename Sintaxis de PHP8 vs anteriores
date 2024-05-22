@@ -26,10 +26,3 @@ class Producto {
     {
     }
 }
-
-$producto = new Producto('Tablet', 200, true); 
-
-//Para comprobar:
-echo "<pre>";
-var_dump($producto);
-echo "</pre>";
