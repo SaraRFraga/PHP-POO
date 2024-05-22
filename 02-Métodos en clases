@@ -1,0 +1,25 @@
+<!-- Métodos en clases: menos eficiente que con métodos y $this -->
+
+<?php 
+
+class Producto {
+    public function __construct(public string $nombre, public int $precio, public bool $disponible)
+    {
+    }
+}
+
+$producto = new Producto('Tablet', 200, true); 
+
+echo "El Producto es: " . $producto->nombre . " y su precio es de: " . $producto->precio;
+
+    echo "<pre>";
+    var_dump($producto);
+    echo "</pre>";
+
+$producto2 = new Producto('Monitor Curvo', 300, true);
+
+echo "El Producto es: " . $producto2->nombre . " y su precio es de: " . $producto2->precio;
+
+    echo "<pre>";
+    var_dump($producto2);
+    echo "</pre>";
