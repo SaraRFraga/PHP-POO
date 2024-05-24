@@ -1,0 +1,27 @@
+Un método estático es un método que se puede llamar directamente desde la clase, sin necesidad de crear una instancia de la clase. Por otro lado, un método de instancia requiere una instancia de la clase para ser llamado y la sintaxis para acceder a ellos cambia.
+
+Por ejemplo:
+
+class MiClase {
+public static function miMetodoEstatico() {
+    // código del método estático
+}
+ 
+// Llamar a un método estático
+MiClase::miMetodoEstatico();
+ 
+ 
+ 
+public function miMetodoDeInstancia() {
+    // código del método de instancia
+  }
+}
+ 
+// Llamar a un método de instancia
+$miClase = new MiClase();
+$miClase->miMetodoDeInstancia();
+
+
+Un método estático se usa a menudo para crear métodos que son utilizados por todas las instancias de una clase, o para crear métodos que no dependen de ningún estado de la instancia de la clase. Por otro lado, un método de instancia se usa para acceder o modificar el estado de una instancia de una clase en particular.
+
+Es importante tener en cuenta que, al igual que con las variables estáticas, los métodos estáticos no pueden acceder a variables de instancia o a otros métodos de instancia sin una instancia de la clase ($miClase->miMetodoDeInstancia();).
