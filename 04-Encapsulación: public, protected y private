@@ -1,0 +1,60 @@
+// ENCAPSULACIÓN: permite ocultar la complejidad interna de una clase y exponer solo las interfaces públicas
+
+// * MODIFICADORES DE ACCESO: public, protected y private *  
+
+// PUBLIC - Se puede acceder y modificar en cualquier lugar (clase y objeto)*
+class Producto {
+    public function __construct(public string $nombre, public int $precio, public bool $disponible)
+    {
+    }
+    public function mostrarProducto() {
+        echo "El Producto es: " . $this->nombre . " y su precio es de: " . $this->precio;
+    }
+}
+
+$producto = new Producto('Tablet', 200, true);
+$producto->mostrarProducto();
+
+echo $producto->"Nuevo Nombre";
+echo $producto->nombre;
+
+echo "<pre>";
+var_dump($producto);
+echo "</pre>";
+
+// PROTECTED - Se puede acceder o modificar unicamente en la clase, pero no en el objeto.
+Para ello es necesario crear un método para poder acceder a él. Utilizamos 'get' para obtener un valor y  'set' para modificalo o agregar nuevos valores.
+
+class Producto {
+    public function __construct(protected string $nombre, public int $precio, public bool $disponible)
+    {
+    }
+    public function mostrarProducto() void {
+        echo "El Producto es: " . $this->nombre . " y su precio es de: " . $this->precio;
+    }
+
+        //debemos crear dentro de la clase una función o método para acceder al objeto
+    public function getNombre() : string {
+        return $this->nombre;
+    }
+        //cuando se llame a la función va a reescribir el nombre que tenemos en nuestro objeto
+    public function setNombre(string $nombre) {
+        $this->nombre = $nombre;
+    } 
+}
+
+$producto = new Producto('Tablet', 200, true);
+//$producto->mostrarProducto(); 
+echo $producto->getNombre();
+$producto->getNombre('Nuevo Nombre');
+
+//echo $producto->"Nuevo Nombre"; !! no podemos modificar el $nombre desde el objeto
+//echo $producto->nombre; !! tampoco se puede acceder a él
+
+echo "<pre>";
+var_dump($producto);
+echo "</pre>";
+
+
+// PRIVATE - solo miembros de la misma clase pueden acceder a él.
+Si solamente hay una clase, se comporta muy similar a protected. Tiene un poco más de efecto, sobretodo si hay herencia
