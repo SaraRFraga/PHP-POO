@@ -1,0 +1,62 @@
+// Métodos Estáticos:las propiedades y métodos estáticos son elementos que pertenecen a la clase y no a una instancia de la misma. Es decir, son compartidos por todas las instancias de la clase y se acceden directamente desde la clase en sí misma, en lugar de acceder a ellos a través de una instancia.
+
+//no van a utilizar la palabra reservada this, sino que van a utilizar otra llamada self.
+
+class Producto {
+    public $imagen;
+    public static $imagenPlaceholder = "Imagen.jpg";
+
+    //variable con public static
+    public function __construct(protected string $nombre, public int $precio, public bool $disponible, string $imagen)
+    {
+        if($imagen) {
+            self::$imagenPlaceholder = $imagen;
+        }
+    }
+    
+  // para hacer referencia a la static $imagen , que es un atributo, no utilizamos 'this' si no utilizamos 'self' aquí por el return self.
+    public static function obtenerImagenProducto() {
+        return self::$imagenPlaceholder;
+    }
+
+    public static function obtenerProducto() {
+        echo "Obteniendo datos del Producto...";
+    }
+
+    public function mostrarProducto() : void {
+        echo "El Producto es: " . $this->nombre . " y su precio es de: " . $this->precio;
+    }
+
+    public function getNombre() : string {
+        return $this->nombre;
+    }
+
+    public function setNombre(string $nombre) {
+        $this->nombre = $nombre;
+    }
+}
+
+// echo Producto::obtenerProducto(); //para llamar a la función, como no requieren instanciar, se tienen una sintaxis especial que es dos puntos, dos puntos seguido del nombre que es obtener producto
+
+$producto = new Producto('Tablet', 200, true, '');
+// $producto->mostrarProducto();
+
+echo $producto->obtenerImagenProducto(); //no le pasamos una imagen, entonces retorna el placeholder "Imagen.jpg".
+
+echo $producto->getNombre();
+$producto->setNombre('Nuevo Nombre');
+
+echo "<pre>";
+var_dump($producto);
+echo "</pre>";
+
+$producto2 = new Producto('Monitor Curvo', 300, true, 'monitorCurvo.jpg'); //aquí sí le pasamos una imagen por lo que retorna 'monitorCurvo.jpg'
+// $producto2->mostrarProducto();
+
+echo $producto2->getNombre();
+
+echo $producto2->obtenerImagenProducto();
+
+// echo "<pre>";
+// var_dump($producto2);
+// echo "</pre>";
