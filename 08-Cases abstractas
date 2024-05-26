@@ -1,0 +1,14 @@
+//* CLASES ABSTRACTAS sirven para que para evitar que alguien que no conoce el código pueda crear instancias de una clase padre
+//La clase padre Transporte sirve como un plano para heredar en las clases hijo. Es por esto que la clase padre nunca debe de istanciarse
+
+abstract class Transporte {   // únicamente con añadir 'abstract' protegemos la clase padre de ser instanciada
+    public function __construct(protected int $ruedas, protected int $capacidad)
+    {
+    }
+    public function getInfo() : string {
+        return "El transporte tiene " . $this->ruedas . " ruedas y una capacidad de " . $this->capacidad . " personas ";
+    }
+    public function getRuedas() : int {
+        return $this->ruedas;
+    }
+}
