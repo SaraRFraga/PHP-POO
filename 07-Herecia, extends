@@ -18,7 +18,6 @@ class Transporte { // creamos la clase principal Transporte para después crear 
     }
 }
 
-
 class Bicicleta extends Transporte { //con la palabra reservada extends se crea la clase hijo Bicicleta que va a heredar los atributos y métodos de Transporte.
 
     public function getInfo() : string {
