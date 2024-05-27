@@ -1,0 +1,37 @@
+//* Consultar la Base de datos con POO y MySQLi
+
+// Conectar a la BD con Mysqli.
+$db = new mysqli('localhost', 'root', '', 'bienesraices_crud');
+
+// 1- Creamos el query
+$query = "SELECT titulo, imagen from propiedades";
+
+// 2- Sentencias preparadas: mejor performance y seguridad
+$stmt = $db->prepare($query);
+
+// 3- Ejecutamos el anterior statement
+$stmt->execute();
+
+// 4- Creamos la variable
+$stmt->bind_result($titulo, $imagen);
+
+// 5- Asignamos el resultado, si solo hay uno
+    // $stmt->fetch();
+
+// 6- Se imprime el resultado, si solo hay uno o pocos
+    // var_dump($titulo);
+    // var_dump($imagen);
+
+// 7- Para varios resultados
+while($stmt->fetch()):
+    var_dump($titulo);
+endwhile;
+-----------
+
+Cuando solo sea un reultado
+var_dump($reultado->fetch_assoc());
+
+Cuando sean múltiples, tenemos que interarlo
+while($row = $reultado->fetch_assoc()):
+    var_dump($row);
+endwhile;
