@@ -1,0 +1,21 @@
+// *AUTOLOAD CLASSES: Cuando va habiendo múltiples clases hace que algunas veces se cargue una clase primero que depende de otra
+
+// require 'clases/Clientes.php';
+// require 'clases/Detalles.php';
+
+//Para evitar esto, en PHP hay una forma para simplificar como importar las clases de forma un poco más dinámica.
+
+function mi_autoload($clase) {
+    $partes = explode('\\', $clase);
+    require __DIR__ . '/clases/' . $partes[1] . '.php';
+}
+
+spl_autoload_register('mi_autoload');
+
+//así vamos importando automáticamente las clases que se van requiriendo
+use App\Clientes;
+use App\Detalles;
+use \Firebase\JWT\JWT;
+
+$detalles = new Detalles();
+$clientes = new Clientes();
