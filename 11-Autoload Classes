@@ -5,6 +5,7 @@
 
 //Para evitar esto, en PHP hay una forma para simplificar como importar las clases de forma un poco más dinámica.
 
+//Incluir las otras clases
 function mi_autoload($clase) {
     $partes = explode('\\', $clase);
     require __DIR__ . '/clases/' . $partes[1] . '.php';
