@@ -1,0 +1,22 @@
+// * NAMESPACES: En PHP no se puede tener dos clases que se llamen igual, de la misma forma que no de puede tener una carpeta o dos archivos que se llamen igual. En recientes versiones de PHP agregaron lo que se conocen como los namesspaces y básicamente se parecen mucho a los paquetes en Java que básicamente es como darle un sub nombre a una clase y de esa forma es muy poco probable que choque.
+
+//Clientes y App\Clientes son dos clases se llaman igual, pero su nombre no choca porque la última tiene la diagonal.
+
+// mi_autoload: incluir las otras clases. Funciona como auto cargador que va a iterar y buscar las clases que queremos instanciar.
+
+function mi_autoload($clase) { 
+    $partes = explode('\\', $clase); 
+    require __DIR__ . '/clases/' . $partes[1] . '.php';
+}
+
+//explode: lo que va a hacer es buscar en este string una diagonal invertida y va a crear un arreglo con una posición de App y otro con Detalles
+
+spl_autoload_register('mi_autoload');
+
+//así vamos importando automáticamente las clases que se van requiriendo
+use App\Clientes;
+use App\Detalles;
+use \Firebase\JWT\JWT;
+
+$detalles = new Detalles();
+$clientes = new Clientes();
