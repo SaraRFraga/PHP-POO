@@ -1,0 +1,24 @@
+// * Consultar la Base de datos con POO y PDO
+
+// 1- Conectar a la BD con PDO
+$db = new PDO('mysql:host=localhost; dbname=bienesraices_crud', 'root', '');
+
+// 2- Creamos el query
+$query = "SELECT titulo, imagen from propiedades";
+
+// 3- Lo preparamos
+$stmt = $db->prepare($query);
+
+// 4- Lo ejecutamos
+$stmt->execute();
+
+// 5- Obtener los resultados
+$resultado = $stmt->fetchAll( PDO::FETCH_ASSOC );
+
+// 6- Iterar
+foreach($resultado as $propiedad):
+    echo $propiedad['titulo'];
+    echo "<br>";
+    echo $propiedad['imagen'];
+    echo "<br>";
+endforeach;
