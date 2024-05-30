@@ -1,0 +1,13 @@
+Aunque estemos en POO, se pueden mezclar funciones y clases en el código sin problema. La idea es aprovechar la flexibilidad de PHP, que permite combinar paradigmas de programación según las necesidades del proyecto. 
+Usualmente las clases suelen estar diseñadas para interactuar con la base de datos, ya que encapsulan la lógica necesaria para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar). Esto incluye conectarse a la base de datos, preparar consultas SQL, ejecutarlas y manejar los resultados. Utilizar clases para estas tareas ayuda a mantener el código organizado y modular, facilitando la reutilización y el mantenimiento.
+
+Pos otro lado, las funciones reutilizables sn muy útiles. El siguiente ejemplo funciona como una herramienta de depuración que puede ser reutilizada en diversos contextos dentro de tu aplicación:
+
+  function debuguear($variable) {
+    echo "<pre>";
+    var_dump($variable);
+    echo "</pre>;
+    exit;
+  }
+
+Esta función acepta una variable como argumento, imprime su contenido de manera legible gracias a var_dump, y luego detiene la ejecución del script con exit. Esto es útil durante el desarrollo para inspeccionar rápidamente el estado de variables específicas sin tener que insertar declaraciones de impresión manualmente en tu código.
