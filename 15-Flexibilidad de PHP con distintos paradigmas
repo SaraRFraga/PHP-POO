@@ -6,7 +6,7 @@ Pos otro lado, las funciones reutilizables sn muy útiles. El siguiente ejemplo 
   function debuguear($variable) {
     echo "<pre>";
     var_dump($variable);
-    echo "</pre>;
+    echo "</pre>";
     exit;
   }
 
