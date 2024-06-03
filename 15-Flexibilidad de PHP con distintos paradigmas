@@ -10,4 +10,13 @@ Pos otro lado, las funciones reutilizables sn muy útiles. El siguiente ejemplo 
     exit;
   }
 
+  function estaAutenticado() : bool {
+      session_start();
+  
+      if(!$_SESSION['login']) {
+          header('Location: /');
+      }
+      return false;
+  }
+
 Esta función acepta una variable como argumento, imprime su contenido de manera legible gracias a var_dump, y luego detiene la ejecución del script con exit. Esto es útil durante el desarrollo para inspeccionar rápidamente el estado de variables específicas sin tener que insertar declaraciones de impresión manualmente en tu código.
