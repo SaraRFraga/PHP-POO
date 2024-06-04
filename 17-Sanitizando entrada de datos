@@ -1,0 +1,22 @@
+Sanitizando atributos con SQL statements
+        
+        // Se asigna a la variable $x el contenido de  $_POST['x']
+        $titulo = mysqli_real_escape_string( $db,  $_POST['titulo'] );
+        $precio = mysqli_real_escape_string( $db,  $_POST['precio'] );
+        $descripcion = mysqli_real_escape_string( $db,  $_POST['descripcion'] );
+        $habitaciones = mysqli_real_escape_string( $db,  $_POST['habitaciones'] );
+        $wc = mysqli_real_escape_string( $db,  $_POST['wc'] );
+        $estacionamiento = mysqli_real_escape_string( $db,  $_POST['estacionamiento'] );
+        $vendedores_id = mysqli_real_escape_string( $db,  $_POST['vendedores_id'] );
+        $creado = date('Y/m/d');
+
+Sanitizando atributos con funciones y POO:
+
+        public function sanitizarAtributos() {
+            $atributos = $this->atributos();
+            $sanitizado = [];
+            foreach($atributos as $key => $value ) {
+                $sanitizado[$key] = self::$db->escape_string($value);
+            }
+            return $sanitizado;
+        }   
