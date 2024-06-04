@@ -1,0 +1,19 @@
+// Insertar en la base de datos (Insertamos SQL dentro de PHP):
+
+            $query = "INSERT INTO propiedades ( titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id ) VALUES ( '$titulo', '$precio', '$nombreImagen', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedores_id' )";
+
+
+// Insertar en la base de datos con funciones y POO:
+
+    public function guardar() {
+
+        //Sanitizar los datos
+        $atributos = $this->sanitizarAtributos();
+
+        // Insertar en la base de datos
+        $query = "INSERT INTO propiedades ( ";
+        $query .= join(', ', array_keys($atributos));
+        $query .= " ) VALUES (' ";
+        $query .= join("', '", array_values($atributos));
+        $query .= " ') ";
+    }
