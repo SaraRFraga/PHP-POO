@@ -1,0 +1,62 @@
+
+    // Arreglo con mensajes de errores
+    $errores = [];
+
+    $titulo = ''; //el valor se les asigna posteriormente en el value del formulario, en este caso "<?php echo $titulo
+    $precio = '';
+    $descripcion = '';
+    $habitaciones = '';
+    $wc = '';
+    $estacionamiento = '';
+    $vendedores_id = '';
+
+    // Ejecutar el código después de que el usuario envíe el formulario
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        $propiedad = new Propiedad($_POST);
+
+        $propiedad->guardar();
+
+        
+        // Asignar files hacia una variable
+        $imagen = $_FILES['imagen'];
+
+        
+        if(!$titulo) { //si el titulo está vacío lo añade al array de errores
+            $errores[] = "Debes añadir un titulo";
+        }
+
+        if(!$precio) {
+            $errores[] = 'El Precio es Obligatorio';
+        }
+
+        if( strlen( $descripcion ) < 50 ) {
+            $errores[] = 'La descripción es obligatoria y debe tener al menos 50 caracteres';
+        }
+
+        if(!$habitaciones) {
+            $errores[] = 'El Número de habitaciones es obligatorio';
+        }
+
+        if(!$wc) {
+            $errores[] = 'El Número de Baños es obligatorio';
+        }
+
+        if(!$estacionamiento) {
+            $errores[] = 'El Número de lugares de Estacionamiento es obligatorio';
+        }
+        
+        if(!$vendedores_id) {
+            $errores[] = 'Elige un vendedor';
+        }
+        
+        if(!$imagen['name'] || $imagen['error'] ) {
+            $errores[] = 'La Imagen es Obligatoria';
+        }
+
+        // Validar por tamaño (1mb máximo)
+        $medida = 1000 * 1000 * 2 ;
+
+        if($imagen['size'] > $medida ) {
+            $errores[] = 'La Imagen es muy pesada';
+        }
