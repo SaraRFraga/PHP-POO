@@ -1,0 +1,17 @@
+Active record: la progamación orientada a objetos busca crear métodos que puedan ser reutilizados
+
+esto trae un array
+    // Obtener los datos de la propiedad
+    $consulta = "SELECT * FROM propiedades WHERE id = {$id}";
+    $resultado = mysqli_query($db, $consulta);
+    $propiedad = mysqli_fetch_assoc($resultado);
+
+esta función trae objetos    
+
+// Busca un registro por si id
+    public static function find($id) {
+        $query = "SELECT * FROM propiedades WHERE id = {$id}";
+
+        $resultado = self::$db->query($query);
+
+    }
