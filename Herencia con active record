@@ -1,0 +1,9 @@
+Clase 378
+
+Gracias a la herencia, una de las piedras angulares de la programación orientada a objetos, podemos tener una clase principal y clases que hereden todos esos métodos y atributos para así evitar estar duplicando código. Así que ActiveRecord será la clase principal y sobre esta van a heredar las demás.
+
+  class ActiveRecord { }    // Cuando se define una clase no se pone paréntesis, solamente se pone llaves.
+
+  class Propiedad extends ActiveRecord { }
+  class Vendedor extends ActiveRecord { }
+
