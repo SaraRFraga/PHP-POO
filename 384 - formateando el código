@@ -1,0 +1,21 @@
+Pasamos de uuna serie de declaraciones condicionales (if, elseif, endif) para verificar el valor de $resultado y mostrar un mensaje de alerta correspondiente:
+
+        <h1>Administrador de Bienes Raíces</h1>
+        <?php if( intval( $resultado ) === 1): ?>
+            <p class="alerta exito">Anuncio creado correctamente</p>
+        <?php elseif( intval( $resultado ) === 2): ?>
+            <p class="alerta exito">Anuncio actualizado correctamente</p>
+        <?php elseif( intval( $resultado ) === 3): ?>
+            <p class="alerta exito">Anuncio eliminado correctamente</p>
+
+        <?php endif; ?>
+
+Substituimos el código anterior para llamar a funciones que hagan nuestro código más breve e inteligente:
+
+        <h1>Administrador de Bienes Raices</h1>
+        <?php 
+            $mensaje = mostrarNotificacion( intval( $resultado) );
+            if($mensaje) { ?>
+                <p class="alerta exito"><?php echo s($mensaje); ?></p>
+            <?php } 
+        ?>
