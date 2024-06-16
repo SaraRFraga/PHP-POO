@@ -1,0 +1,53 @@
+// Mensajes para el usuario con php sin funciones
+
+        <h1>Administrador de Bienes Raíces</h1>
+        <?php if( intval( $resultado ) === 1): ?>
+            <p class="alerta exito">Anuncio creado correctamente</p>
+        <?php elseif( intval( $resultado ) === 2): ?>
+            <p class="alerta exito">Anuncio actualizado correctamente</p>
+        <?php elseif( intval( $resultado ) === 3): ?>
+            <p class="alerta exito">Anuncio eliminado correctamente</p>
+
+        <?php endif; ?>
+
+// Mejor utilizar lo siguente si hay varios mensajes posibles:
+// Mensajes para el usuario en una función reutilizable
+    
+    function mostrarNotificacion($codigo) {
+        $mensaje = '';
+    
+        switch ($codigo) {   //Cuando tenemos muchos if, mejor utilizar switch
+            case 1:
+                $mensaje = 'Propiedad Creada Correctamente';
+                break;
+            case 2:
+                $mensaje = 'Propiedad Actualizada Correctamente';
+                break;
+            case 3:
+                $mensaje = 'Propiedad Eliminada Correctamente';
+                break;
+            case 4:
+                $mensaje = 'Vendedor Registrado Correctamente';
+                break;
+            case 5:
+                $mensaje = 'Vendedor Actualizado Correctamente';
+                break;
+            case 6:
+                $mensaje = 'Vendedor Eliminado Correctamente';
+                break;
+            default:   // siempre debe de haber un resultado por defecto
+                $mensaje = false;
+                break;
+        }
+        return $mensaje;
+    }
+
+
+// Mensajes para el usuario haciendo llamada a la función y substituyendo al primer código con php
+        <h1>Administrador de Bienes Raíces</h1>
+        <?php 
+            $mensaje = mostrarNotificacion( intval( $resultado) );
+            if($mensaje) { ?>
+                <p class="alerta exito"><?php echo s($mensaje); ?></p>
+            <?php } 
+        ?>
