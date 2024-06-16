@@ -1,0 +1,20 @@
+    public function validar() {
+        if(!$this->nombre) {
+            self::$errores[] = "El Nombre es Obligatorio";
+        }
+
+        if(!$this->apellido) {
+            self::$errores[] = "El Apellido es Obligatorio";
+        }
+
+        if(!$this->telefono) {
+            self::$errores[] = "El Teléfono es Obligatorio";
+        }
+
+        // Expresión regular: busca que un patrón se cumpla
+        if(!preg_match('/[0-9]{10}/', $this->telefono)) {
+            self::$errores[] = "Teléfono no válido";
+        }
+
+        return self::$errores;
+    }
