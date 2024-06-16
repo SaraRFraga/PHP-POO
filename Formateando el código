@@ -1,0 +1,8 @@
+Clase 378
+
+// Consultar para obtener los vendedores
+    $consulta = "SELECT * FROM vendedores";
+    $resultado = mysqli_query($db, $consulta);
+
+// Consultar para obtener los vendedores
+  $vendedores = Vendedor::all();
