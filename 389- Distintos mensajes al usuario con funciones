@@ -44,10 +44,10 @@
 
 
 // Mensajes para el usuario haciendo llamada a la función y substituyendo al primer código con php
+
         <h1>Administrador de Bienes Raíces</h1>
         <?php 
             $mensaje = mostrarNotificacion( intval( $resultado) );
             if($mensaje) { ?>
-                <p class="alerta exito"><?php echo s($mensaje); ?></p>
-            <?php } 
-        ?>
+                <p class="alerta exito"><?php echo s($mensaje); ?> </p>
+            <?php } ?>
