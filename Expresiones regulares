@@ -1,4 +1,10 @@
-    public function validar() {
+preg_match() permite buscar o comparar cadenas mediante expresiones regulares en este caso de 10 dígitos
+
+		if(!preg_match('/^[0-9]{10}$/', $this->telefono)) {
+		self::$alertas['error'][] = 'El Teléfono debe contener 10 dígitos';
+		}
+
+public function validar() {
         if(!$this->nombre) {
             self::$errores[] = "El Nombre es Obligatorio";
         }
